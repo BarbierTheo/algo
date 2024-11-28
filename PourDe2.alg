@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Algo>
-    <description courant="AFFICHER &quot;Saisir un entier compris entre 1 et 9&quot;" texte=""/>
+    <description courant="AFFICHER &quot; &quot;" texte=""/>
     <extension extnom="inactif"/>
-    <fonction fctcode="" fctetat="inactif"/>
-    <F2 F2etat="inactif" F2defaut="" F2lignes="" F2para=""/>
-    <repere repcode="-10#10#-10#10#2#2" repetat="inactif"/>
-    <param epaisseurPoint="2" maxBoucle="500000" totalAffichages="1000" epaisseurLigne="2" nbDecimales="8" arrondiAuto="vrai" totalBoucles="5000000"/>
+    <fonction fctetat="inactif" fctcode=""/>
+    <F2 F2defaut="" F2lignes="" F2para="" F2etat="inactif"/>
+    <repere repetat="inactif" repcode="-10#10#-10#10#2#2"/>
+    <param totalBoucles="5000000" nbDecimales="8" epaisseurPoint="2" epaisseurLigne="2" arrondiAuto="vrai" maxBoucle="500000" totalAffichages="1000"/>
     <item algoitem="FONCTIONS_UTILISEES" code="200#declarationfonctions"/>
     <item algoitem="VARIABLES" code="100#declarationsvariables">
         <item algoitem="nombreLigne EST_DU_TYPE NOMBRE" code="1#NOMBRE#nombreLigne"/>
@@ -13,8 +13,6 @@
         <item algoitem="j EST_DU_TYPE NOMBRE" code="1#NOMBRE#j"/>
     </item>
     <item algoitem="DEBUT_ALGORITHME" code="101#debutalgo">
-        <item algoitem="AFFICHER &quot;Saisir un entier compris entre 1 et 9&quot;" code="4#Saisir un entier compris entre 1 et 9#0"/>
-        <item algoitem="LIRE nombreLigne" code="2#nombreLigne#pasliste"/>
         <item algoitem="TANT_QUE ((nombreLigne &lt; 1) ou (nombreLigne > 9)) FAIRE" code="15#(nombreLigne &lt; 1) ou (nombreLigne > 9)">
             <item algoitem="DEBUT_TANT_QUE" code="16#debuttantque"/>
             <item algoitem="AFFICHER &quot;Saisir un nouvel entier compris entre 1 et 9&quot;" code="4#Saisir un nouvel entier compris entre 1 et 9#0"/>
@@ -26,6 +24,7 @@
             <item algoitem="POUR j ALLANT_DE 1 A nombreLigne" code="12#j#1#nombreLigne">
                 <item algoitem="DEBUT_POUR" code="13#debutpour"/>
                 <item algoitem="AFFICHER j" code="3#j#0#pasliste"/>
+                <item algoitem="AFFICHER &quot; &quot;" code="4# #0"/>
                 <item algoitem="SI (j == nombreLigne) ALORS" code="6#j == nombreLigne">
                     <item algoitem="DEBUT_SI" code="7#debutsi"/>
                     <item algoitem="AFFICHER &quot; &quot;" code="4# #1"/>
