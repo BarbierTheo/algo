@@ -1,46 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Algo>
-    <description texte="" courant=""/>
+    <description texte="" courant="SI ((mois==2) et ((annee%4)==0) et ((annee%100)!=0)) ALORS"/>
     <extension extnom="inactif"/>
     <fonction fctcode="" fctetat="inactif"/>
-    <F2 F2defaut="" F2lignes="" F2para="" F2etat="inactif"/>
+    <F2 F2defaut="" F2lignes="" F2etat="inactif" F2para=""/>
     <repere repetat="inactif" repcode="-10#10#-10#10#2#2"/>
-    <param nbDecimales="8" totalBoucles="5000000" maxBoucle="500000" totalAffichages="1000" epaisseurLigne="2" arrondiAuto="vrai" epaisseurPoint="2"/>
-    <item code="200#declarationfonctions" algoitem="FONCTIONS_UTILISEES"/>
-    <item code="100#declarationsvariables" algoitem="VARIABLES">
-        <item code="1#NOMBRE#jour" algoitem="jour EST_DU_TYPE NOMBRE"/>
-        <item code="1#NOMBRE#mois" algoitem="mois EST_DU_TYPE NOMBRE"/>
-        <item code="1#NOMBRE#annee" algoitem="annee EST_DU_TYPE NOMBRE"/>
+    <param maxBoucle="500000" nbDecimales="8" totalBoucles="5000000" arrondiAuto="vrai" totalAffichages="1000" epaisseurLigne="2" epaisseurPoint="2"/>
+    <item algoitem="FONCTIONS_UTILISEES" code="200#declarationfonctions"/>
+    <item algoitem="VARIABLES" code="100#declarationsvariables">
+        <item algoitem="jour EST_DU_TYPE NOMBRE" code="1#NOMBRE#jour"/>
+        <item algoitem="mois EST_DU_TYPE NOMBRE" code="1#NOMBRE#mois"/>
+        <item algoitem="annee EST_DU_TYPE NOMBRE" code="1#NOMBRE#annee"/>
     </item>
-    <item code="101#debutalgo" algoitem="DEBUT_ALGORITHME">
-        <item code="4#Saisir un jour, un mois et une date, le tout en chiffres#0" algoitem="AFFICHER &quot;Saisir un jour, un mois et une date, le tout en chiffres&quot;"/>
-        <item code="2#jour#pasliste" algoitem="LIRE jour"/>
-        <item code="2#mois#pasliste" algoitem="LIRE mois"/>
-        <item code="2#annee#pasliste" algoitem="LIRE annee"/>
-        <item code="6#(mois == 1) ou (mois == 3) ou (mois == 5) ou (mois == 7) ou (mois == 8) ou (mois == 10) ou (mois == 12)" algoitem="SI ((mois == 1) ou (mois == 3) ou (mois == 5) ou (mois == 7) ou (mois == 8) ou (mois == 10) ou (mois == 12)) ALORS">
-            <item code="7#debutsi" algoitem="DEBUT_SI"/>
-            <item code="4#La date est valide#0" algoitem="AFFICHER &quot;La date est valide&quot;"/>
-            <item code="8#finsi" algoitem="FIN_SI"/>
-            <item code="9#sinon" algoitem="SINON">
-                <item code="10#debutsinon" algoitem="DEBUT_SINON"/>
-                <item code="6#(mois == 4) ou (mois == 6) ou (mois == 9) ou (mois == 11)" algoitem="SI ((mois == 4) ou (mois == 6) ou (mois == 9) ou (mois == 11)) ALORS">
-                    <item code="7#debutsi" algoitem="DEBUT_SI"/>
-                    <item code="6#(jour &lt; 30) et (jour >=1)" algoitem="SI ((jour &lt; 30) et (jour >=1)) ALORS">
-                        <item code="7#debutsi" algoitem="DEBUT_SI"/>
-                        <item code="4#La date est valide#0" algoitem="AFFICHER &quot;La date est valide&quot;"/>
-                        <item code="8#finsi" algoitem="FIN_SI"/>
-                        <item code="9#sinon" algoitem="SINON">
-                            <item code="10#debutsinon" algoitem="DEBUT_SINON"/>
-                            <item code="4#Date invalide#0" algoitem="AFFICHER &quot;Date invalide&quot;"/>
-                            <item code="11#finsinon" algoitem="FIN_SINON"/>
+    <item algoitem="DEBUT_ALGORITHME" code="101#debutalgo">
+        <item algoitem="AFFICHER &quot;Saisir un jour, un mois et une date, le tout en chiffres&quot;" code="4#Saisir un jour, un mois et une date, le tout en chiffres#0"/>
+        <item algoitem="LIRE jour" code="2#jour#pasliste"/>
+        <item algoitem="LIRE mois" code="2#mois#pasliste"/>
+        <item algoitem="LIRE annee" code="2#annee#pasliste"/>
+        <item algoitem="TANT_QUE ((jour &lt;1) ou (jour > 31) ou (mois &lt; 1) ou (mois > 12)) FAIRE" code="15#(jour &lt;1) ou (jour > 31) ou (mois &lt; 1) ou (mois > 12)">
+            <item algoitem="DEBUT_TANT_QUE" code="16#debuttantque"/>
+            <item algoitem="AFFICHER &quot;ERREUR : Saisir un jour, un mois et une date, le tout en chiffres&quot;" code="4#ERREUR : Saisir un jour, un mois et une date, le tout en chiffres#0"/>
+            <item algoitem="LIRE jour" code="2#jour#pasliste"/>
+            <item algoitem="LIRE mois" code="2#mois#pasliste"/>
+            <item algoitem="LIRE annee" code="2#annee#pasliste"/>
+            <item algoitem="FIN_TANT_QUE" code="17#fintantque"/>
+        </item>
+        <item algoitem="SI ((mois == 1) ou (mois == 3) ou (mois == 5) ou (mois == 7) ou (mois == 8) ou (mois == 10) ou (mois == 12)) ALORS" code="6#(mois == 1) ou (mois == 3) ou (mois == 5) ou (mois == 7) ou (mois == 8) ou (mois == 10) ou (mois == 12)">
+            <item algoitem="DEBUT_SI" code="7#debutsi"/>
+            <item algoitem="AFFICHER &quot;La date est valide&quot;" code="4#La date est valide#0"/>
+            <item algoitem="FIN_SI" code="8#finsi"/>
+            <item algoitem="SINON" code="9#sinon">
+                <item algoitem="DEBUT_SINON" code="10#debutsinon"/>
+                <item algoitem="SI ((mois == 4) ou (mois == 6) ou (mois == 9) ou (mois == 11)) ALORS" code="6#(mois == 4) ou (mois == 6) ou (mois == 9) ou (mois == 11)">
+                    <item algoitem="DEBUT_SI" code="7#debutsi"/>
+                    <item algoitem="SI ((jour &lt; 30) et (jour >=1)) ALORS" code="6#(jour &lt; 30) et (jour >=1)">
+                        <item algoitem="DEBUT_SI" code="7#debutsi"/>
+                        <item algoitem="AFFICHER &quot;La date est valide&quot;" code="4#La date est valide#0"/>
+                        <item algoitem="FIN_SI" code="8#finsi"/>
+                        <item algoitem="SINON" code="9#sinon">
+                            <item algoitem="DEBUT_SINON" code="10#debutsinon"/>
+                            <item algoitem="AFFICHER &quot;Date invalide&quot;" code="4#Date invalide#0"/>
+                            <item algoitem="FIN_SINON" code="11#finsinon"/>
                         </item>
                     </item>
-                    <item code="8#finsi" algoitem="FIN_SI"/>
+                    <item algoitem="FIN_SI" code="8#finsi"/>
+                    <item algoitem="SINON" code="9#sinon">
+                        <item algoitem="DEBUT_SINON" code="10#debutsinon"/>
+                        <item algoitem="SI ((mois==2) et ((annee%4)==0) et ((annee%100)!=0)) ALORS" code="6#(mois==2) et ((annee%4)==0) et ((annee%100)!=0)">
+                            <item algoitem="DEBUT_SI" code="7#debutsi"/>
+                            <item algoitem="SI (jour &lt;= 29) ALORS" code="6#jour &lt;= 29">
+                                <item algoitem="DEBUT_SI" code="7#debutsi"/>
+                                <item algoitem="AFFICHER &quot;Date valide&quot;" code="4#Date valide#0"/>
+                                <item algoitem="FIN_SI" code="8#finsi"/>
+                                <item algoitem="SINON" code="9#sinon">
+                                    <item algoitem="DEBUT_SINON" code="10#debutsinon"/>
+                                    <item algoitem="AFFICHER &quot;Date invalide&quot;" code="4#Date invalide#0"/>
+                                    <item algoitem="FIN_SINON" code="11#finsinon"/>
+                                </item>
+                            </item>
+                            <item algoitem="FIN_SI" code="8#finsi"/>
+                            <item algoitem="SINON" code="9#sinon">
+                                <item algoitem="DEBUT_SINON" code="10#debutsinon"/>
+                                <item algoitem="SI (jour &lt;= 28) ALORS" code="6#jour &lt;= 28">
+                                    <item algoitem="DEBUT_SI" code="7#debutsi"/>
+                                    <item algoitem="AFFICHER &quot;Date valide&quot;" code="4#Date valide#0"/>
+                                    <item algoitem="FIN_SI" code="8#finsi"/>
+                                    <item algoitem="SINON" code="9#sinon">
+                                        <item algoitem="DEBUT_SINON" code="10#debutsinon"/>
+                                        <item algoitem="AFFICHER &quot;Date invalide&quot;" code="4#Date invalide#0"/>
+                                        <item algoitem="FIN_SINON" code="11#finsinon"/>
+                                    </item>
+                                </item>
+                                <item algoitem="FIN_SINON" code="11#finsinon"/>
+                            </item>
+                        </item>
+                        <item algoitem="FIN_SINON" code="11#finsinon"/>
+                    </item>
                 </item>
-                <item code="103#commentaire" algoitem=""/>
-                <item code="11#finsinon" algoitem="FIN_SINON"/>
+                <item algoitem="FIN_SINON" code="11#finsinon"/>
             </item>
         </item>
     </item>
-    <item code="102#finalgo" algoitem="FIN_ALGORITHME"/>
+    <item algoitem="FIN_ALGORITHME" code="102#finalgo"/>
 </Algo>
